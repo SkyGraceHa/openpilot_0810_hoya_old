@@ -326,7 +326,6 @@ std::unordered_map<std::string, uint32_t> keys = {
     {"GitPullOnBoot", PERSISTENT},
     {"LiveSteerRatioPercent", PERSISTENT},
     {"StoppingDistAdj", PERSISTENT},
-    {"SoftRestartTriggered", CLEAR_ON_MANAGER_START},   
     {"ShowError", PERSISTENT},
     {"CommaLong", PERSISTENT},
 };

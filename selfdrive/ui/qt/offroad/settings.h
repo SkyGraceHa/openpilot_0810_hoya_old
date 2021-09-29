@@ -20,7 +20,6 @@ public:
 signals:
   void reviewTrainingGuide();
   void showDriverView();
-  void closeSettings();    
 };
 
 class TogglesPanel : public ListWidget {
