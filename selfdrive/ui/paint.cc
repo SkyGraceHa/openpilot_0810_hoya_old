@@ -662,10 +662,6 @@ static void ui_draw_vision_speed(UIState *s) {
 }
 
 static void ui_draw_vision_event(UIState *s) {
-  const int viz_event_w = 220;
-  const int viz_event_x = s->fb_w - (viz_event_w + bdr_s);
-  const int viz_event_y = bdr_s;
-
   const int center_x = (bdr_s) + 2 * (184 + 15);
   const int center_y = int(bdr_s);
 
@@ -687,7 +683,7 @@ static void ui_draw_vision_event(UIState *s) {
     // 일반적인 과속단속구간( 135 || 150 || 200 || 231)일 경우  
     if ((s->scene.mapSign == 135 || s->scene.mapSign == 150 || s->scene.mapSign == 200 || s->scene.mapSign == 231) && s->scene.liveMapData.opkrspeedlimit > 29) {
       if (s->scene.liveMapData.opkrspeedlimit < 40) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_30", 0.8f);
-                                                    ui_draw_image(s, {960-200, 540+100, 400, 400}, "speed_S30", 0.2f);} //중앙 스쿨존 이미지
+                                                    ui_draw_image(s, {960-250, 540-250, 500, 500}, "speed_S30", 0.2f);} //중앙 스쿨존 이미지
       else if (s->scene.liveMapData.opkrspeedlimit < 50) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_40", 0.8f);} 
       else if (s->scene.liveMapData.opkrspeedlimit < 60) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_50", 0.8f);}
       else if (s->scene.liveMapData.opkrspeedlimit < 70) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_60", 0.8f);} 
@@ -702,7 +698,7 @@ static void ui_draw_vision_event(UIState *s) {
       ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_var", 0.8f); }
     //과속방지턱( 124 ) 일 경우
     if (s->scene.liveMapData.opkrspeedsign == 124) {
-      ui_draw_image(s, {960-200, 540+50, 400, 400}, "speed_bump", 0.2f); }
+      ui_draw_image(s, {960-175, 540-175, 350, 350}, "speed_bump", 0.2f); }
   }
   
   //draw compass by opkr and re-designed by hoya
@@ -715,8 +711,11 @@ static void ui_draw_vision_event(UIState *s) {
   }
 
   // draw steering wheel
+  const int viz_event_w = 220;
+  const int viz_event_x = s->fb_w - (viz_event_w + bdr_s);
+  const int viz_event_y = bdr_s;
   const int bg_wheel_size = 90;
-  const int bg_wheel_x = viz_event_x + (viz_event_w-bg_wheel_size);
+  const int bg_wheel_x = viz_event_x + (viz_event_w - bg_wheel_size);
   const int bg_wheel_y = viz_event_y + (bg_wheel_size/2);
   const QColor &color = bg_colors[s->status];
   NVGcolor nvg_color = nvgRGBA(color.red(), color.green(), color.blue(), color.alpha());
