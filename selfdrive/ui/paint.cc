@@ -669,10 +669,10 @@ static void ui_draw_vision_event(UIState *s) {
     // 버스전용차로( 246 )일 경우
     if (s->scene.liveMapData.opkrspeedsign == 246) {ui_draw_image(s, {center_x, center_y, 200, 200}, "bus_only", 0.8f);} 
     // 차선변경금지( 198 || 199 || 249 )일 경우
-    if (s->scene.mapSign == 198 || s->scene.mapSign == 199 || s->scene.mapSign == 249) {
+    if (s->scene.liveMapData.opkrspeedsign == 198 || s->scene.liveMapData.opkrspeedsign == 199 || s->scene.liveMapData.opkrspeedsign == 249) {
       ui_draw_image(s, {center_x, center_y, 200, 200}, "do_not_change_lane", 0.8f);}
     // 구간단속구간( 165 )일 경우
-    if (s->scene.mapSign == 165 && s->scene.liveMapData.opkrspeedlimit != 0) { 
+    if (s->scene.liveMapData.opkrspeedsign == 165 && s->scene.liveMapData.opkrspeedlimit != 0) { 
       if (s->scene.liveMapData.opkrspeedlimit < 70) {ui_draw_image(s, {center_x, center_y, 200, 200}, "section_60", 0.8f);}
       else if (s->scene.liveMapData.opkrspeedlimit < 80) {ui_draw_image(s, {center_x, center_y, 200, 200}, "section_70", 0.8f);} 
       else if (s->scene.liveMapData.opkrspeedlimit < 90) {ui_draw_image(s, {center_x, center_y, 200, 200}, "section_80", 0.8f);}
@@ -681,7 +681,7 @@ static void ui_draw_vision_event(UIState *s) {
       else if (s->scene.liveMapData.opkrspeedlimit < 120) {ui_draw_image(s, {center_x, center_y, 200, 200}, "section_110", 0.8f);}
     } 
     // 일반적인 과속단속구간( 135 || 150 || 200 || 231)일 경우  
-    if ((s->scene.mapSign == 135 || s->scene.mapSign == 150 || s->scene.mapSign == 200 || s->scene.mapSign == 231) && s->scene.liveMapData.opkrspeedlimit > 29) {
+    if ((s->scene.liveMapData.opkrspeedsign == 135 || s->scene.liveMapData.opkrspeedsign == 150 || s->scene.liveMapData.opkrspeedsign == 200 || s->scene.liveMapData.opkrspeedsign == 231) && s->scene.liveMapData.opkrspeedlimit > 29) {
       if (s->scene.liveMapData.opkrspeedlimit < 40) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_30", 0.8f);
                                                     ui_draw_image(s, {960-250, 540-250, 500, 500}, "speed_S30", 0.2f);} //중앙 스쿨존 이미지
       else if (s->scene.liveMapData.opkrspeedlimit < 50) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_40", 0.8f);} 
@@ -694,7 +694,7 @@ static void ui_draw_vision_event(UIState *s) {
       else if (s->scene.liveMapData.opkrspeedlimit < 120) {ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_110", 0.8f);}
     }
     //가변구간( 195 || 197) 일 경우
-    if (s->scene.mapSign == 195 || s->scene.mapSign == 197) {
+    if (s->scene.liveMapData.opkrspeedsign == 195 || s->scene.liveMapData.opkrspeedsign == 197) {
       ui_draw_image(s, {center_x, center_y, 200, 200}, "speed_var", 0.8f); }
     //과속방지턱( 124 ) 일 경우
     if (s->scene.liveMapData.opkrspeedsign == 124) {
